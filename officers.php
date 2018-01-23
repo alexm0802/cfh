@@ -22,13 +22,10 @@
         
         <p>
             <ul class="unlist">
-                <li>Laura Breiman</li>     
-                <li>Kristine Fong</li>
-                <li>Skylar Goldman</li>
-                <li>Caroline Hope</li>
-                <li>Megan K Schussman</li>
-                <li>Ethan Sokol</li>
-                <li>Brenda Stern</li>       
+                <li>Kimberly Katz</li>     
+                <li>Sarah Van Dierdonck</li>
+                <li>Deborah Wen</li>
+                <li>Alexandra Meredith</li>      
              </ul>
         </p>
 

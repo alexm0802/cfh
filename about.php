@@ -39,6 +39,7 @@ awareness, professional behavior, and opportunities for those who seek to learn 
 Judaism or challah. </p>
 
 <p> Challah for Hunger is a 501(c)(3) non-profit. </p>
+<p> You can access the website for the national Challah for Hunger organization <a href="http://challahforhunger.org" target="_blank">here</a>. </p>
     </div>
 	
 	</div>
