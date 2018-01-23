@@ -1,0 +1,268 @@
+@charset "utf-8";
+/* CSS Document */
+
+/*
+	when specifying margins: 
+		margin: top right bottom left; 
+*/
+
+
+html{
+	font: 0.80em Verdana, Arial, Helvetica, sans-serif;
+	height: 100%; 
+	color: #002a49; 
+}
+
+body{	
+	margin: 0; 
+	padding: 0; 
+	height: 100%; 
+	background: #064471 url(images/challahPattern.png) fixed repeat-x 0px 0px; 
+}
+
+/*
+----------------------------------------------------------------------------------
+	divs
+----------------------------------------------------------------------------------
+*/
+#container{
+	background-color: rgba(26, 115, 181, 0.6);
+	width: 795px; 
+	margin-left: 2%; 
+	padding-left: 5px; 
+	float: left; 
+}
+
+#header{
+	background-image: url(images/header02.jpg); 
+	width: 790px; 
+	height: 245px; 
+}
+
+.stats, #links, .maincontent, #footer, #leftColumn{
+	padding: 5px; 
+	float: left;
+	background-color: #bbd5e9; 
+	margin-right: 5px; 
+	margin-top: 5px; 
+	/*border: 1px solid #002a49; */
+}
+
+.stats, #links, #footer, .imgLeft{
+	border: 1px solid #002a49;
+}
+
+/* contains statistics, such as how many challah we've sold */
+.stats{
+	width: 138px; 	 
+	/*background-color: rgba(255,255,255,0.7);*/
+	/*background: transparent; url(images/statsBkgd.png) repeat-y;*/	 
+}
+
+/* div that contains the stuff in the left column */
+#leftColumn{
+	width: 155px; 
+	padding: 0px;  
+	margin: 0; 
+	background: transparent; /*url(images/leftBkgd.png) repeat-y; */
+	/*border: 1px solid black; */
+}
+
+/* 	divs that contain images in the left column 
+	size images to be 148px wide, any height */
+.imgLeft{
+	width: 148px; 
+	padding: 0px;  
+	margin: 5px 0 0 0; 
+	background: transparent; 
+	/*border: 1px solid magenta; */
+	float: left; 
+}	
+
+#links{
+	width: 135px; 
+	background: /*transparent*/ #bbd5e9 url(images/linksBkgd.png) no-repeat; 
+	padding-top: 80px; /* top padding equal to the background image height + 5px */ 
+}
+
+/* div that contains the divs for main content*/
+#mainContentContainer{
+	background: url(images/backgroundContainer2.png) repeat-y; 
+	/*background-color: #bbd5e9;*/
+	width: 480px; 
+	/*border: 2px solid yellow; */
+	float: left; 
+	margin-right: 5px; 
+	border: 1px solid #002a49;
+}
+
+/* general div for the main content of the site */
+.maincontent{
+	width: 458px; 
+	background-color: transparent; 
+	margin-right: 0px; 
+	padding-left: 10px; 
+}
+
+/* 	meant to go inside a maincontent div to hold an image 
+	that will float to the right of the content 
+	size images with a maximum width, no max height 
+*/
+.imgMainR{
+	width: 150px; 
+	float: right; 	
+	padding: 0; 
+	margin: 20px 0 10px 10px; 
+	border: 1px solid #002a49;
+}
+
+#footer{
+	width: 780px; 
+	text-align: center; 
+	margin: 0px; 
+}
+
+/* contains images in footer */
+p.footerImgs{
+	display: table; 
+/*	border: 1px solid red; */
+	text-align: center; 
+	/* allow for horizontal centering */
+	margin: 0 auto 0 auto; 
+}
+
+/* allows for vertical centering of images in footer */
+span{
+	display: table-cell;
+	vertical-align: middle; 
+	margin: 0; 
+}
+
+/*
+---------------------------------------------------------------------------------------	
+	text
+---------------------------------------------------------------------------------------
+*/
+
+p{
+	margin-top: 5px; 
+	margin-bottom: 15px; 
+}
+
+/* for text in footer */
+p.footer{
+	margin: 0 0 0 0; 
+}
+
+/* emphasizes text, very slightly larger font size*/
+.emphLarger{
+	font-size: 1.05em; 
+	font-weight: bold; 	
+	display: inline; 
+	vertical-align: bottom; 
+}
+
+h1, h2, h3{
+	color: #0259a2;  
+	background-color: #bbd5e9; 
+	opacity: 0.6; 
+	padding: 0; 
+	margin: 5px 0 10px 0;  
+}
+
+/* span for h3-like text */
+.h3span{
+	color: #0259a2;
+	font-size: 1.15em; 
+	display: block; 
+	font-weight: bold; 
+	margin: 0px 0 5px 0;
+}
+
+/* span for h3-like text */
+.hspan{
+	color: #0259a2;
+	font-size: 1.15em; 
+	display: block; 
+	font-weight: bold; 
+	margin: 0px 0 5px 0;
+}
+
+/* for the dates in the home page news section */
+.newsDate{
+	color: #0259a2;
+	font-size: 1.05em; 
+	display: block; 
+	font-weight: bold; 
+	margin: 0px 0 5px 0;
+}
+
+/* un-bulleted list */
+ul.unlist{
+	list-style-type: none; 
+	padding: 0px; 
+	margin: 0px;
+}
+
+/* general links */
+a{
+	text-decoration: none; 
+	font-weight: bold; 
+	color: #914b1d; /*rgb(160,109,7); */
+}
+
+a:visited{
+	color: #533c0f; /*rgb(124,82,8);*/
+}
+
+a:hover{
+	font-style: italic; 
+	font-weight: bold; 
+}
+
+/* navigation links and sublinks */
+ul#navLinks{
+	list-style-type: none; 
+	font-size: 1.10em; 
+	padding: 0px; 
+	margin: 0px; 
+}
+
+/* sublinks (second level links) */
+#navLinks li ul {
+	list-style-type: none; 
+	font-size: 0.9em;
+	margin-left: -25px; 
+}
+
+#navLinks a, #navLinks li ul a{
+	color: #914b1d; /*rgb(160,109,7); */
+	display: block; 
+	font-weight: normal; 
+	/*width: 140px;  */
+	/*width: 100%; */
+	/*background-color: rgba(255,255,255,0.5); */
+	/*background: url(images/linkDivider.png) top no-repeat; */
+	margin: 2px; 
+	padding: 2px; 
+	border-top: 1px solid #002a49;
+}
+
+#navLinks li ul a{
+	border: none; 	
+}
+
+#navLinks a:hover, .navSubLinks a:hover{
+	font-style: italic; 
+	font-weight: bold; 
+}
+
+#navLinks a:visited, .navSubLinks a:visited{
+	color: #533c0f; /*rgb(124,82,8);*/
+}
+
+textarea{
+	width: 95%;
+	border: 3px solid #cccccc;
+	padding: 5px;
+}

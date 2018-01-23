@@ -1,0 +1,249 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>MIT Challah for Hunger</title>
+<link href="blueLayout.css" rel="stylesheet" type="text/css" />
+<style>
+	h4{
+		font-size: 1.4em; 
+		font-weight: bold; 	
+		display: block; 
+		padding: 0; 
+		margin: 5px 0 10px 0;
+	}
+	h5{
+		font-size: 1.0em; 
+		font-weight: bold; 	
+		display: block; 
+	}
+	h6{
+		font-size: 1.0em; 
+		font-weight: bold; 	
+		display: inline;  
+	}
+</style>
+</head>
+
+<body>
+
+<div id="container">
+	<div id="header">
+	</div>
+        
+	<div id="leftColumn">
+    	<?php include 'leftcolumn.php'; ?>        
+  </div>
+
+	<div id="mainContentContainer">
+    <div class="maincontent">    	
+        <h1>Confirmation</h1> 
+        
+        <?php 
+        ini_set('display_errors',1);
+        ini_set('display_startup_errors',1);
+        error_reporting(-1);        
+        
+        //************************************************************************
+        //global variables
+        //mySQL server
+        $server = "sql.mit.edu";
+        $user = "cfh";
+        $pass = "lom52day";
+        $dbase = "cfh+home";
+        
+        //current database table
+        $dbtable = "orders101614";
+        
+        //date of the next baking session
+        $currDate = '2014-10-16';
+        
+        //how many volunteer hours is equivalent to $1
+        $hrPerDollar = 5/5.5;
+        //**************************************************************************
+        
+        //----modify for special flavors--------------------------------------------
+        //display string 
+        $spec1Str = "Sweet Coconut";
+        //database label string 
+        $spec1StrDB = "SweetCoconut"; 
+        $spec2Str = "Sweet Coconut (Vegan)";
+        $specStrDB = "SweetCoconutVegan"; 
+        $spec3Str = "Garlic-Herb";
+        $spec3StrDB = "GarlicHerb"; 
+        $spec4Str = "Garlic-Herb (Vegan)";
+        $spec4StrDB = "GarlicHerbVegan"; 
+        //---------------------------------------------------------------------------
+        
+        	/* //get confirmation info from paypal 
+	        $pp_hostname = "www.paypal.com"; // Change to www.sandbox.paypal.com to test against sandbox
+	        // read the post from PayPal system and add 'cmd'
+	        $req = 'cmd=_notify-synch';
+	        $tx_token = $_GET['tx'];
+	        
+        	echo "tx_token: "; 
+        	echo $tx_token; 
+        	
+	        //for paypal PDT
+	        $auth_token = "Vufum_A50XWKERlFUEbQ1u69dRg2PMXMwwFRbGdGRDtqeCCeCj-aFGY59HO";
+	        $req .= "&tx=$tx_token&at=$auth_token";
+	        
+	        $ch = curl_init();
+	        echo "1"; 
+	        curl_setopt($ch, CURLOPT_URL, "https://$pp_hostname/cgi-bin/webscr");
+	        echo "2"; 
+	        curl_setopt($ch, CURLOPT_POST, 1);
+	        echo "3"; 
+	        curl_setopt($ch, CURLOPT_RETURNTRANSFER,1);
+	        echo "4"; 
+	        curl_setopt($ch, CURLOPT_POSTFIELDS, $req);
+	        echo "5"; 
+	        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 1);
+	        echo "6"; 
+	        //set cacert.pem verisign certificate path in curl using 'CURLOPT_CAINFO' field here,
+	        //if your server does not bundled with default verisign certificates.
+	        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, 2);
+	        echo "7"; 
+	        curl_setopt($ch, CURLOPT_HTTPHEADER, array("Host: $pp_hostname"));
+	        echo "8"; 
+	        $res = curl_exec($ch);
+	        echo "9"; 
+	        curl_close($ch);
+        
+        	echo "res = "; 
+        	echo $res;  */
+        
+        ?>
+        
+				
+        <p>Thank you for your payment. PayPal will email you a receipt. You may log into your Paypal 
+        account, if you have one, at <a href="https://www.paypal.com/us/">www.paypal.com/us</a> to view 
+        details of this transaction.</p>
+        
+        <?php 
+        	$identifier = htmlspecialchars($_GET["id"]);
+
+        	//get relevant into from database 
+        	// Create connection
+        	$con=mysqli_connect($server, $user, $pass, $dbase);
+        	// Check connection
+        	if (mysqli_connect_errno()) {
+        		echo "Failed to connect to MySQL: " . mysqli_connect_error();
+        	}
+        	else
+        	{
+        		$sql = "SELECT * FROM " . $dbtable . " WHERE identifier=" . $identifier; 
+        		$result = mysqli_query($con,$sql);
+        		if($result === FALSE) 
+				{
+					echo "fail"; 
+        			die(mysql_error()); 
+        		}
+        		else 
+        		{
+	        		$result = mysqli_fetch_array($result); 
+	        		//display order info 
+	        		echo "<h5>Order Summary </h5>"; 
+	        		/* //display what they ordered
+	        		echo "<p><h6>Name: </h6>" . $result['name'] . "<br>";
+	        		echo "<h6>Email: </h6>" . $result['email'] . "</p>";
+	        			
+	        		//if their order is a gift
+	        		if (!empty($result['gift']))
+	        		{
+	        			echo "<p><h6>This order is a gift. </h6><br>";
+	        			echo "<h6>Recipient's name: </h6>" . $result['rName'] . "<br>";
+	        			echo "<h6>Recipient's email: </h6>" . $result['rEmail'] . "</p>";
+	        		}
+	        			
+	        		//display flavors they ordered
+	        		$flavorStr = "";
+	        		echo "<p><h6>You ordered: </h6><br>";
+	        		if ($plain > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>Plain: </h6>" . $result['plain'] . "<br>";	        			
+	        		}
+	        		if ($plainvegan > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>Plain (Vegan): </h6>" . $result['plainVeg'] . "<br>";	        			
+	        		}
+	        		if ($nutella > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>Nutella: </h6>" . $result['nutella'] . "<br>";	        			
+	        		}
+	        		if ($cs > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>Cinnamon Sugar: </h6>" . $result['cs'] . "<br>";	        			
+	        		}
+	        		if ($csvegan > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>Cinnamon Sugar (Vegan): </h6>" . $result['csvegan'] . "<br>";	        			
+	        		}
+	        		//-----------------------------------------------------------------------------------------------------------
+	        		//modify for special flavors
+	        		if ($spec1 > 0)
+	        		{	        			       			
+	        			$flavorStr = $flavorStr . "<h6>" . $spec1Str . ": </h6>" . $result[$spec1StrDB] . "<br>";	        			
+	        		}
+	        		if ($spec2 > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>" . $spec2Str . ": </h6>" . $result[$spec2StrDB] . "<br>";
+	        		}
+	        		if ($spec3 > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>" . $spec3Str . ": </h6>" . $result[$spec3StrDB] . "<br>";
+	        		}
+	        		if ($spec4 > 0)
+	        		{
+	        			$flavorStr = $flavorStr . "<h6>" . $spec4Str . ": </h6>" . $result[$spec4StrDB] . "<br>";
+	        		}
+	        		//------------------------------------------------------------------------------------------------------------
+	        		echo $flavorStr . "</p>";
+	        		
+	        		//display totals
+	        		$totalCost = $result['totalCost']; 
+	        		echo "<p><h6>Total challah ordered: </h6>" . $result['totalChallah'] . "<br>";
+	        		echo "<h6>Total cost: </h6>$" . $totalCost;
+	        		//if paying in hours, tell how many hours they need to pay for challah
+	        		if ($result['paymentMethod']=="Volunteer Hours")
+	        		{
+	        			$h = $totalCost*$hrPerDollar;
+	        			echo " = " . $h . " hours";
+	        		}
+	        		echo "</p>";
+	        			
+	        		//payment method
+	        		echo "<p><h6>Payment Method: </h6>" . $result['paymentMethod'] . "</p>";
+	        			
+	        		//display delivery location
+	        		echo "<p><h6>Delivery Location: </h6>" . $result['location'] . "</p>";
+	        		
+	        		//info about volunteering
+	        		echo "<p><h6>Will you be volunteering with us this week? </h6>" . $result['volunteer'] . "</p>";
+	        			
+	        		//flavor requests and comments
+	        		echo "<p><h6>Flavor requests: </h6>" . $result['flavorRequests'] . "</p>";
+	        		echo "<p><h6>Comments: </h6>" . $result['comments'] . "</p>"; */
+	        		
+	        		?> 
+        		} 
+        	}
+        	
+        ?>
+               
+        
+    </div>
+	</div>
+
+  <div id="links">
+  	<?php include 'links.php'; ?>
+	
+    </div>
+    
+  <div id="footer">
+    	<?php include 'footer.php'; ?>   
+    </div>
+</div>
+
+</body>
+</html>
