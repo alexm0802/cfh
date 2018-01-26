@@ -13,15 +13,14 @@
         <li><a href="about.php">About Us</a>
         	<ul>
         		<li><a href="about.php">About CFH</a></li>
-                <li><a href="officers.php">Club Officers</a></li>
-                <li><a href="aboutcause.php">About Our Causes</a></li>  
+                <li><a href="officers.php">Club Officers</a></li>  
                 <li><a href="aboutchallah.php">About Challah</a></li>                          	
           </ul>
             </li>
         <li><a href="bakingsales.php">Baking/Sales</a></li>
         <li><a href="orderform.php">Challah Order Form</a></li>
         <li><a href="contribute.php">Contribute</a></li>
-        <li><a href="linkspage.php">Links</a></li>
+        <li><a href="linkspage.php">Our Causes</a></li>
         <li><a href="documents.php">Documents</a></li>
         <li><a href="contact.php">Contact Us</a></li>
 	</ul> 

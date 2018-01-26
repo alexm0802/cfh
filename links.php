@@ -14,7 +14,7 @@
         <li><a href="bakingsales.php">Baking/Sales</a></li>
         <li><a href="orderform.php">Challah Order Form</a></li>
   		<li><a href="contribute.php">Contribute</a></li>
-        <li><a href="linkspage.php">Links</a></li>
+        <li><a href="linkspage.php">Our Causes</a></li>
         <li><a href="documents.php">Documents</a></li>
         <li><a href="contact.php">Contact Us</a></li>
 	</ul> 
