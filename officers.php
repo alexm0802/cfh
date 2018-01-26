@@ -22,10 +22,11 @@
         
         <p>
             <ul class="unlist">
-                <li>Kimberly Katz</li>     
-                <li>Sarah Van Dierdonck</li>
-                <li>Deborah Wen</li>
-                <li>Alexandra Meredith</li>      
+                <li>President: Kimberly Katz</li>     
+                <li>Vice President: Sarah Van Dierdonck</li>
+                <li>Treasurer: Deborah Wen</li>
+                <li>Webmaster: Alexandra Meredith</li> 
+                <li>Faculty Advisor: Marissa Feinman Freed</li>     
              </ul>
         </p>
 
